@@ -20,7 +20,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Loading JSON"),
+        title: Text("Loading JSON Local"),
       ),
       body : Container (
         child: Center(
