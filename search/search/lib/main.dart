@@ -32,6 +32,7 @@ class HomePageState extends State<HomePage> {
               // decode json
               var mydata = json.decode(snapshot.data.toString());
 
+
               return new ListView.builder(
                   itemBuilder: (BuildContext context, int index){
                     return Card(
