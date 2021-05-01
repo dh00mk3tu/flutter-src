@@ -8,7 +8,7 @@ void main() => runApp(MaterialApp(
 ));
 
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulWidget with SingleTickerProviderStateMixin{
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -33,6 +33,23 @@ class _HomePageState extends State<HomePage> {
     ),            
   ];
 
+  TabController TabController;
+
+  @override 
+  void initState() {
+    super.initState();
+    tabController = new TabController(
+      length: 2,
+      vsync: this,
+    );
+  }
+
+  @override 
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,18 +57,49 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Utils App"),
       ),
-      body: Container(
-        child: Stepper(
-          steps : steps,
-          currentStep: this.curr_step,
-          type: StepperType.horizontal,
-          
-        )
-      )
+      // body: Container(
+      //   child: Stepper(
+      //     steps : steps,
+      //     currentStep: this.curr_step,
+      //     type: StepperType.horizontal,
+         
+      //   ),
+      // ),
+      body: TabBarView(
+        children: [
+          NewPage("First"),
+          NewPage("Second"),
+        ],
+        controller: tabController,
+      ),
+      bottomNavigationBar : Material(
+        child: TabBar(
+          tabs: [
+            Tab(
+              icon : Icon(Icons.favorite)
+            ),
+            Tab(
+              icon : Icon(Icons.email)
+            )jy
+          ]
+        ),
+      ),
     );
   }
 }
 
+class NewPage extends StatelessWidget {
+  final String title;
+  NewPage(this.title);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body : Center(
+        child: Text(title) 
+      )
+    );
+  }
+}
 
 
 // class MyBody extends StatelessWidget {
