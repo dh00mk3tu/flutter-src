@@ -76,11 +76,11 @@ class _HomePageState extends State<HomePage> {
         child: TabBar(
           tabs: [
             Tab(
-              icon : Icon(Icons.favorite)
+              icon : Icon(Icons.fav orite)
             ),
             Tab(
               icon : Icon(Icons.email)
-            )jy
+            )
           ]
         ),
       ),
