@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:news/beauty/niceList.dart';
+import 'package:news/style/niceList.dart';
 // import 'package:news/model/source.dart';
-import 'package:news/pages/drawer.dart';
-import 'package:news/services/api.dart';
+import 'package:news/container/pages/drawer.dart';
+// import 'package:news/services/api.dart';
 
-import 'package:news/model/article.dart';
-import 'package:news/services/techAPI.dart';
+import 'package:news/class/article.dart';
+import 'package:news/container/api/businessAPI.dart';
+// import 'package:news/services/techAPI.dart';
 
-import '../main.dart';
+import 'package:news/main.dart';
 
 
 void main() {
-  runApp(TechPageApp());
+  runApp(BusinessPageApp());
 }
 
-class TechPageApp extends StatelessWidget {
+class BusinessPageApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TechPage(),
+      home: BusinessPage(),
     );
   }
 }
 
-class TechPage extends StatefulWidget {
+class BusinessPage extends StatefulWidget {
   @override
-  _TechPageState createState() => _TechPageState();
+  _BusinessPageState createState() => _BusinessPageState();
 }
 
 
-class _TechPageState extends State<TechPage> {
+class _BusinessPageState extends State<BusinessPage> {
 
-  TechApiGet hehe = TechApiGet();
+  BusinessApiGet hehe = BusinessApiGet();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class _TechPageState extends State<TechPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "completely accurate tech news",
+          "completely accurate business news",
           style: TextStyle(
             color: Colors.white
           ),
@@ -52,7 +53,7 @@ class _TechPageState extends State<TechPage> {
       ),
       
       body: FutureBuilder(
-        future: hehe.getTechArticle(),
+        future: hehe.getBusinessArticle(),
         builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot){
           if(snapshot.hasData) {
             List <Article> articles = snapshot.data;
@@ -63,7 +64,7 @@ class _TechPageState extends State<TechPage> {
             return ListView.builder(
               itemCount: articles.length,
               itemBuilder: (context, index)=> Card(
-                child: niceList(articles[index]),
+                child: niceList(articles[index], context),
               )
             );
           }

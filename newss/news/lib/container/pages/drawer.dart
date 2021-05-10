@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news/pages/technews.dart';
+import 'package:news/container/pages/bitcoinNews.dart';
+import 'package:news/container/pages/businessNews.dart';
+import 'package:news/container/pages/technews.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -31,7 +33,7 @@ class MainDrawer extends StatelessWidget {
           ),
 
           ListTile(
-            trailing: Icon(Icons.car_repair),
+            trailing: Icon(Icons.business),
             title: Text(
               "Business News",
               style: TextStyle(
@@ -40,21 +42,27 @@ class MainDrawer extends StatelessWidget {
               ),
             ), 
             onTap: () {
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BusinessPageApp())
+              );
             },
           ),
 
           ListTile(
-            trailing: Icon(Icons.car_repair),
+            trailing: Icon(Icons.money),
             title: Text(
-              "Health News",
+              "BItcoid News",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
               ),
             ), 
             onTap: () {
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BitcoinPageApp())
+              );
             },
           )
         ],
