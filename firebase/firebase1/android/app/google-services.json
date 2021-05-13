@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "539374561280",
+    "project_id": "bread-mohan",
+    "storage_bucket": "bread-mohan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539374561280:android:e3168aefdf615d886b10e5",
+        "android_client_info": {
+          "package_name": "com.dh00mk3tu.firebase1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539374561280-3slcui3f9bh17dnb6863u6fa57l7kn4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3yRh-ibEymrI-TX7jL0lUv1xDeV_m0Mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539374561280-3slcui3f9bh17dnb6863u6fa57l7kn4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
