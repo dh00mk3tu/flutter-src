@@ -1,4 +1,6 @@
+import 'package:firebase1/source/pages/drawer.dart';
 import 'package:firebase1/source/pages/login.dart';
+import 'package:firebase1/source/pages/loginState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +12,18 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
 
   String _email, _password;
-  final auth = FirebaseAuth.instance;
+  
+  final auth = FirebaseAuth.instance, ok=1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Register!")
+      ),
+      drawer: Drawer(
+        child: MainDrawer()
+      ),
       body: Column(
         children: [
           Padding(
@@ -44,15 +54,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
             ),
           ),
+          
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-               ElevatedButton(
-                child: Text("or register"),
+               ElevatedButton (
+                child: Text("sign up"),
                 onPressed: (){
+                  // loginSuccess(ok);
+
                   auth.createUserWithEmailAndPassword(
                     email: _email,
                     password: _password
                   );
+                  // .catchError((error) =>);
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => LoginScreen()
@@ -60,6 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   );
                 },
               ),
+              
             ],
           )
         ],

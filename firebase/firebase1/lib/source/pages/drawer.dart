@@ -1,7 +1,15 @@
+import 'package:firebase1/source/pages/login.dart';
+import 'package:firebase1/source/pages/showData.dart';
 import 'package:firebase1/source/pages/updateDetails.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
+  var flag =0;
+  Future<void> _logOut() async{
+    await FirebaseAuth.instance.signOut();
+    flag = 1;
+  }
   @override
   Widget build(BuildContext context) {
 return Drawer(
@@ -21,7 +29,14 @@ return Drawer(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
               ),
-            ), 
+            ),
+            onTap: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => DisplayScreen()
+                ),
+              );
+            },  
           ),
 
           ListTile(
@@ -50,10 +65,25 @@ return Drawer(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
               ),
-            ), 
+            ),
+            onTap: () {
+              _logOut();
+              if(flag == 1) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen()
+                  ),
+                );
+              }
+              else {
+                print("no logout for me");
+              }
+              
+            }
           )
         ],
       )
     );
   }
 }
+

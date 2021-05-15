@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase1/source/pages/drawer.dart';
+import 'package:firebase1/source/pages/home.dart';
+import 'package:firebase1/source/pages/loginState.dart';
 import 'package:flutter/material.dart';
 
 class UpdateScreen extends StatelessWidget {
-
+  String err="Failed";
   TextEditingController name = new TextEditingController();
   TextEditingController age = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Update User Details"),
+        title: Text("Add User Details"),
       ),
       drawer: Drawer(
         child: MainDrawer()
@@ -43,18 +45,29 @@ class UpdateScreen extends StatelessWidget {
                 height:20,
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   Map<String, dynamic> data = {
-                    'field1': name.text,
-                    'field2': age.text
+                    'name': name.text,
+                    'age': age.text
                   };
-                  FirebaseFirestore.instance.collection("user").add(data);
+                  await FirebaseFirestore.instance.collection("users").add(data);
+                  // .catchError((error) => loginError(context, err))
                 },
                 child: Text("Update"),
               ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen()
+                ),
+              );
+        },
       ),
     );
   }

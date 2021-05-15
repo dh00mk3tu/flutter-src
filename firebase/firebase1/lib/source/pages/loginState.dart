@@ -9,7 +9,7 @@ Widget loginError(BuildContext context, String err) {
 }
 
 
-Widget loginSuccess(String res) {
+Widget loginSuccess(dynamic res) {
   // return SnackBar(
   //   duration: Duration(seconds:2),
   //   content: Text("$res"),

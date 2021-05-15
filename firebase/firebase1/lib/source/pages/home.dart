@@ -1,4 +1,5 @@
 import 'package:firebase1/source/pages/drawer.dart';
+import 'package:firebase1/source/pages/imageupload.dart';
 // import 'package:firebase1/source/pages/login.dart';
 import 'package:firebase1/source/pages/loginState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +22,8 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            loginSuccess(_ok)
+            loginSuccess(_ok),
+            SetImage()
           ],
         ) 
       ),
