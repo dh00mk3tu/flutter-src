@@ -20,7 +20,7 @@ Future getUserDetails() async{
   try{
     DocumentSnapshot res = await FirebaseFirestore.instance.collection('users').doc('name').get();
     userDat = res;
-    return userDat;
+    return userDat['name'];
   }
   catch(e) {
     print(e.toString());

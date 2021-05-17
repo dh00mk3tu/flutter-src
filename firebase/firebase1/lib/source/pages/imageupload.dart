@@ -8,9 +8,11 @@ class SetImage extends StatefulWidget {
   _SetImageState createState() => _SetImageState();
 }
 
+File image, retImage;
+
 class _SetImageState extends State<SetImage> {
   
-  File image;
+  // File image;
   final picker = ImagePicker();
   Future _openGallery() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -18,6 +20,7 @@ class _SetImageState extends State<SetImage> {
     setState(() {
       if(pickedFile != null) {
         image = File(pickedFile.path);
+        retImage = image;
         Navigator.pop(context);
       }
       else {
@@ -32,6 +35,7 @@ class _SetImageState extends State<SetImage> {
     setState(() {
       if(clickedFile != null) {
         image = File(clickedFile.path);
+        retImage = image;
         Navigator.pop(context);
       }
       else {
@@ -39,7 +43,7 @@ class _SetImageState extends State<SetImage> {
       }
     });
   }
-
+  
   Future<void> _openPicker(BuildContext context){
     return showDialog(
       context: context,
@@ -97,6 +101,10 @@ class _SetImageState extends State<SetImage> {
       }
     );
   }
+  
+  returnPath() {
+    return image;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,5 +136,14 @@ class _SetImageState extends State<SetImage> {
         ),
       ),
     );
+  }
+}
+
+Widget drawerImage() {
+  if (retImage != null){
+    return new Image.file(retImage);
+  }
+  else {
+    return Icon(Icons.person_outlined);
   }
 }

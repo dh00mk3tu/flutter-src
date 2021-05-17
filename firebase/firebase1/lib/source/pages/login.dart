@@ -12,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   String _email, _password, _error,_ok;
+  var status = 0;
   final auth = FirebaseAuth.instance;
 
   @override
@@ -22,12 +23,24 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 30,
+          ),
+          Text("login to kar pehle",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold
+
+            )
+          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: TextField(
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                hintText: "email"
+                hintText: "email bata be",
+                border: OutlineInputBorder(),
+                labelText: "emaillllllll"
               ),
               onChanged: (value) {
                 setState(() {
@@ -41,7 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
             child: TextField(
               obscureText: true,
               decoration: InputDecoration(
-                hintText: "password"
+                hintText: "password bata",
+                border: OutlineInputBorder(),
+                labelText: "password",
               ),
               onChanged: (value) {
                 setState(() {
@@ -51,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
                 child: Text("sign in"),
@@ -61,6 +76,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       email: _email,
                       password: _password
                     );
+                    CircularProgressIndicator();
+                    status = 1; 
+                  }
+                  catch (e) {
+                    _error = e.toString();
+                    loginError(context, _error);
+                  }
+                  if(status == 1) {
                     _ok = "Success!";
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -74,10 +97,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         builder: (context) => HomeScreen()
                       ),
                     );
-                  }
-                  catch (e) {
-                    _error = e.toString();
-                    loginError(context, _error);
                   }
                 },
               ),
