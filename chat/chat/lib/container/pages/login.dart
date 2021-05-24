@@ -1,12 +1,24 @@
 import 'package:chat/container/pages/components/appbar.dart';
+import 'package:chat/container/pages/inbox.dart';
+import 'package:chat/container/pages/register.dart';
+import 'package:chat/services/authenticate.dart';
 import 'package:flutter/material.dart';
 
-class LogIn extends StatefulWidget {
+class LogInScreen extends StatefulWidget {
+  
+  // final Function stateCheck;
+  // LogIn(this.stateCheck);
+
   @override
-  _LogInState createState() => _LogInState();
+  _LogInScreenState createState() => _LogInScreenState();
 }
 
-class _LogInState extends State<LogIn> {
+class _LogInScreenState extends State<LogInScreen> {
+
+  AuthFunction parseData = AuthFunction();
+  bool isLoggedIn = false;
+  TextEditingController name = new TextEditingController();
+  TextEditingController password = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +40,11 @@ class _LogInState extends State<LogIn> {
               height: 65,
             ),
             TextField(
+              controller: name,
               decoration: InputDecoration(
                 hintText: "Enter Your Email",
                 labelText: "Email",
-                fillColor: Color(0xffE9EB81),
-                hoverColor: Color(0xffE9EB81),
-                // focusColor: Color(0xffFFE2E2),
+
                 border: OutlineInputBorder(
 
                   borderRadius: BorderRadius.circular(20),
@@ -45,6 +56,7 @@ class _LogInState extends State<LogIn> {
               height:25
             ),
             TextField(
+              controller: password,
               decoration: InputDecoration(
                 hintText: "Enter Your Password",
                 labelText: "Passowrd",
@@ -61,29 +73,60 @@ class _LogInState extends State<LogIn> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.pink[700]
+                  ),          
                   child: Text("Sign In",
                     style: TextStyle(
                       fontSize: 16,
                     )
                   ),
                   onPressed: (){
+                    parseData.LogIn(name.text, password.text);
+                    if (isLoggedIn) {
+                      CircularProgressIndicator();
+                    }
+                    else {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => InboxScreen()
+                      ));
+                    }
 
                   }
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.pink[700]
+                  ),
                   child: Text("Register",
                     style: TextStyle(
                       fontSize: 16,
                     )
                   ),
                   onPressed: (){
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => RegisterScreen()
+                      ),
+                    );
                   }
                 )
               ],
             ),
-
+            SizedBox(
+              height:15
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink[400]
+              ),
+              child: Text("Register With Google",),
+              
+              onPressed: (){
+                // LogIn();
+              }
+            )
           ],
         ),
       ),

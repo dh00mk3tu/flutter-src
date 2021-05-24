@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "38789034038",
+    "project_id": "chingchong-fa967",
+    "storage_bucket": "chingchong-fa967.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38789034038:android:a66513732beb9a682c2897",
+        "android_client_info": {
+          "package_name": "com.example.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38789034038-jd224jkv26k29lu83f3ocva0j1ndv3u2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbx1li2n2rTQiVuSo1rxaFR1xMSe3vkyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38789034038-jd224jkv26k29lu83f3ocva0j1ndv3u2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
