@@ -73,7 +73,7 @@ class _ChatBoxScreenState extends State<ChatBoxScreen> {
                                 ),
                               );
                             },
-                          );
+                    );
                   } else {
                     return Center(child: CircularProgressIndicator());
                   }
