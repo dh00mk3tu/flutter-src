@@ -1,3 +1,4 @@
+import 'package:chat/container/pages/inbox.dart';
 import 'package:chat/container/pages/login.dart';
 import 'package:chat/container/pages/settings.dart';
 import 'package:chat/services/authenticate.dart';
@@ -23,6 +24,26 @@ class MainDrawer extends StatelessWidget {
             accountEmail: Text("data"),
 
           ),
+          ListTile(
+            title: Text("People"),
+            onTap: (){
+              Navigator.pushReplacement(
+                context, MaterialPageRoute(
+                  builder: (context) => InboxScreen()
+                )
+              );
+            },  
+          ),
+          // ListTile(
+          //   title: Text("People"),
+          //   onTap: (){
+          //     Navigator.pushReplacement(
+          //       context, MaterialPageRoute(
+          //         builder: (context) => InboxScreen()
+          //       )
+          //     );
+          //   },  
+          // ),
           // ListTile(title: Text("Inbox")),
           ListTile(
             title: Text("Settings"),

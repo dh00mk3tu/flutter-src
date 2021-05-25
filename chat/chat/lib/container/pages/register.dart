@@ -1,4 +1,5 @@
 import 'package:chat/container/pages/components/appbar.dart';
+import 'package:chat/container/pages/components/fetchdata.dart';
 import 'package:chat/container/pages/inbox.dart';
 import 'package:chat/services/authenticate.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 AuthFunction parseData = AuthFunction();
+FetchUsers parseUsers = FetchUsers();
 
 class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController name = new TextEditingController();
@@ -21,12 +23,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
   logInValid() {
     if (valid.currentState.validate()) {
       //  return ;
+
+      Map<String, String> userData = {
+        "name" : name.text,
+        "email": email.text,
+      };
       print("hehe");
       setState(() {
         loading = true;
       });
       parseData.registerUser(name.text, email.text, password.text).then((res){
         print("$res");
+
+
+        parseUsers.postData(userData);
         Navigator.push(context, MaterialPageRoute(
           builder: (context) => InboxScreen()
         ));

@@ -1,5 +1,8 @@
 import 'package:chat/container/pages/components/appbar.dart';
+import 'package:chat/container/pages/components/drawer.dart';
 import 'package:flutter/material.dart';
+
+bool changeTheme = false; 
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -11,7 +14,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppbar(context),
-      drawer: Drawer(),
+      drawer: MainDrawer(),
       body: Container(
         child: Column(
           children: [
@@ -25,9 +28,55 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 )
               ),
             ),
+            SizedBox(
+              height: 20
+            ),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("Theme",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    Switch(
+                      value: changeTheme,
+                      onChanged: (newChange) {
+                        setState(() {
+                          changeTheme = newChange;
+                        });
+                      }
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("Change Photo",
+                      style: TextStyle(
+                        fontSize: 18
+                      ),
+                    ),
+                  ]
+                ),
+              ),
+            ),
+            // FloatingActionButton(
+            //   child: Icon(Icons.home),
+            // ),
           ]
         ),
       ),
     );
   }
 }
+
+// WIDGET
