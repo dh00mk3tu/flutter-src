@@ -1,5 +1,7 @@
 import 'package:chat/container/pages/components/appbar.dart';
 import 'package:chat/container/pages/components/drawer.dart';
+import 'package:chat/container/pages/typemessage.dart';
+import 'package:chat/services/authenticate.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +12,8 @@ class ChatBoxScreen extends StatefulWidget {
 
 class _ChatBoxScreenState extends State<ChatBoxScreen> {
 
-
+  var currEmail;
+  TextEditingController msg = TextEditingController();
   Widget msgComponent() {
     return Row(
       children: [
@@ -19,8 +22,21 @@ class _ChatBoxScreenState extends State<ChatBoxScreen> {
       ],
     );
   }
+
+  AuthFunction parseData = AuthFunction();
+
+  // currEmail = parseData.currUser();
+  // print("$parseData.copyData()");
   @override
-  Widget build(BuildContext context) {
+  initState(){
+    currEmail = parseData.currUser();
+    // print(currEmail.toString());
+    // currEmail = currEmail.toString();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) { 
     return Scaffold(
       appBar: MainAppbar(context),
       drawer: MainDrawer(),
@@ -29,7 +45,7 @@ class _ChatBoxScreenState extends State<ChatBoxScreen> {
           children: [
             Container(
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("users").snapshots(),
+                stream: FirebaseFirestore.instance.collection("user1_msg").snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
@@ -45,7 +61,7 @@ class _ChatBoxScreenState extends State<ChatBoxScreen> {
                                   Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: Text(
-                                      dat['name']+ ": " + dat['msgs'],
+                                      "$currEmail" + ": " + dat['msg-u1'],
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold
@@ -65,16 +81,42 @@ class _ChatBoxScreenState extends State<ChatBoxScreen> {
               ),
               
             ),
-            
-            FloatingActionButton(
-              backgroundColor: Colors.pink[800],
-              child: Icon(Icons.send,
-                color: Colors.white,
-              ),
-              onPressed: (){
-
+            SizedBox(
+              child : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: msg,
+                ),
+              )
+            ),
+            ElevatedButton(
+              child: Text("Send A Message"),
+              onPressed: () async {
+                Map<String, dynamic> data = {
+                  "msg-u1": msg.text
+                };
+                await FirebaseFirestore.instance.collection('user1_msg').add(data);
               }
             ),
+            
+            // FloatingActionButton(
+            //   backgroundColor: Colors.pink[800],
+            //   child: Icon(Icons.send,
+            //     color: Colors.white,
+            //   ),
+            //   onPressed: (){
+            //     return showDialog(
+            //       context: context,
+            //       builder: (context) => AlertDialog(
+            //         title: Text("Please Type Your Message"),
+            //         // content: TextField(),
+            //         actions: <Widget>[
+                      
+            //       ],
+            //       )
+            //     );
+            //   }
+            // ),
           ],
         ),
 

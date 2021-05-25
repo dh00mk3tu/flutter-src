@@ -83,6 +83,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     )
                   ),
                   onPressed: (){
+                    parseData.copyData(name.text);
                     parseData.LogIn(name.text, password.text);
                     if (isLoggedIn) {
                       CircularProgressIndicator();

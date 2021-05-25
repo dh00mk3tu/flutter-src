@@ -44,6 +44,7 @@ class _InboxScreenState extends State<InboxScreen> {
   //   superFetch();
   //   super.initState();  
   // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +96,7 @@ Widget fetchPeople() {
               padding: const EdgeInsets.only(top: 10),
               itemBuilder: (context, index) {
                QueryDocumentSnapshot dat = snapshot.data.docs[index];
-               print(dat);
+              //  print(dat);
                 return Card(
                   child: Row (
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
