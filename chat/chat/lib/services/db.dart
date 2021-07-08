@@ -1,0 +1,9 @@
+class DatabaseMethods {
+  getUserByUsername(){
+
+  }
+
+  uploadUserInfo(){
+     
+  }
+}

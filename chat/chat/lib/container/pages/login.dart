@@ -4,6 +4,8 @@ import 'package:chat/container/pages/register.dart';
 import 'package:chat/services/authenticate.dart';
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
 class LogInScreen extends StatefulWidget {
   
   // final Function stateCheck;
@@ -75,7 +77,7 @@ class _LogInScreenState extends State<LogInScreen> {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.pink[700]
+                    primary: Colors.teal
                   ),          
                   child: Text("Sign In",
                     style: TextStyle(
@@ -90,7 +92,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     }
                     else {
                       Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => InboxScreen()
+                        builder: (context) => WhatsappHome()
                       ));
                     }
 
@@ -98,7 +100,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.pink[700]
+                    primary: Colors.teal
                   ),
                   child: Text("Register",
                     style: TextStyle(
@@ -119,16 +121,16 @@ class _LogInScreenState extends State<LogInScreen> {
             SizedBox(
               height:15
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.pink[400]
-              ),
-              child: Text("Register With Google",),
+            // ElevatedButton(
+            //   style: ElevatedButton.styleFrom(
+            //     primary: Colors.pink[400]
+            //   ),
+            //   child: Text("Register With Google",),
               
-              onPressed: (){
-                // LogIn();
-              }
-            )
+            //   onPressed: (){
+            //     // LogIn();
+            //   }
+            // )
           ],
         ),
       ),

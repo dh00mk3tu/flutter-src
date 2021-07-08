@@ -1,5 +1,6 @@
 import 'package:chat/container/pages/components/appbar.dart';
 import 'package:chat/container/pages/components/fetchdata.dart';
+import 'package:chat/container/pages/home.dart';
 import 'package:chat/container/pages/inbox.dart';
 import 'package:chat/services/authenticate.dart';
 import 'package:flutter/material.dart';
@@ -25,20 +26,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
       //  return ;
 
       Map<String, String> userData = {
-        "name" : name.text,
+        "displayName" : name.text,
         "email": email.text,
+        "password": password.text,
       };
       print("hehe");
       setState(() {
         loading = true;
       });
+      print("hehe2ani");
+
       parseData.registerUser(name.text, email.text, password.text).then((res){
         print("$res");
-
-
         parseUsers.postData(userData);
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => InboxScreen()
+          builder: (context) => WhatsappHome()
         ));
       });
     }

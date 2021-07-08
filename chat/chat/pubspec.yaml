@@ -31,6 +31,11 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   shared_preferences:
+  intl: ^0.17.0
+  fluttertoast:
+  firebase_storage:
+  image_picker:
+  permission_handler:
 dev_dependencies:
   flutter_test:
     sdk: flutter

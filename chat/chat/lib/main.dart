@@ -14,7 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'not whatsapp',
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+        accentColor: Colors.tealAccent
+      ),
       home: LogInScreen(),
     );
   }

@@ -1,0 +1,40 @@
+Card(
+                  child: Row (
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text("Name: " +dat['name'],
+                          style: TextStyle(
+                            fontSize: 12,
+                            // fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Email: " +dat['email'], 
+                          style: TextStyle(
+                            fontSize: 12,
+                            // fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.pink[900]
+                        ),
+                        child: Text("Message"),
+                        onPressed: (){
+                          // messageState(dat['email']);
+                          Navigator.push(
+                            context, 
+                            MaterialPageRoute(
+                              builder: (context) => ChatBoxScreen()
+                            )
+                          );
+                        }
+                      )
+                    ],
+                  ),
+                );

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 
-Widget MainAppbar(BuildContext context) {
+Widget chatAppbar(BuildContext context, String contact) {
   return AppBar(
     centerTitle: true,
     title: Row(
       children: [
-        // CircleAvatar(),
-        // SizedBox(
-        //   width: 10,
-        // ),
-        Text("WhatsApp Try 3"),
+        CircleAvatar(),
+        SizedBox(
+          width: 10,
+        ),
+        Text("$contact"),
       ],
     ),
     backgroundColor: Colors.teal,

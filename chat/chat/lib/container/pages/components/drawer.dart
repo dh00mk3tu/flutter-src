@@ -2,6 +2,7 @@ import 'package:chat/container/pages/inbox.dart';
 import 'package:chat/container/pages/login.dart';
 import 'package:chat/container/pages/settings.dart';
 import 'package:chat/services/authenticate.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 AuthFunction auth = new AuthFunction();
@@ -12,6 +13,9 @@ AuthFunction auth = new AuthFunction();
       isLoggedIn = !isLoggedIn;
     // });
   }
+  User loggedInUser = FirebaseAuth.instance.currentUser;
+  String email = loggedInUser.email;
+  String name = loggedInUser.displayName;
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -20,8 +24,9 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text("data"),
-            accountEmail: Text("data"),
+            // currentAccountPicture: ,
+            accountName: Text("$name"),
+            accountEmail: Text("$email"),
 
           ),
           ListTile(
